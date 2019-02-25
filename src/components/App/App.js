@@ -3,7 +3,26 @@ import axios from 'axios';
 import './App.css';
 
 class App extends Component {
+  state ={
+    mList: [],
+    pick: ''
+  }
+  componentDidMount() {
+    this.getCalendar();
+  }
+  getCalendar = () => {
+    axios({
+      method: 'GET',
+      url: '/calendar'
+    }).then((response) => {
+      this.setState({
+        mList: response.data
+      })
+    })
+  }
+
   render() {
+    console.log(this.state.mList)
     return (
       <div className="App">
         <header className="App-header">
