@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 class MonthItem extends Component{
 
-
+doPick=()=>{
+    let yeeted = this.props.taco.name
+    this.props.yeetPick(yeeted)
+}
 
 
 
@@ -9,7 +12,7 @@ class MonthItem extends Component{
     render(){
         return (
             <div>
-<li>{this.props.taco.name}</li>
+<li onClick={this.doPick}>{this.props.taco.name}</li>
             </div>
 
         )

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import MonthList from '../MonthList/MonthList'
+import Header from '../Header/Header'
 class App extends Component {
   state ={
     mList: [],
@@ -20,18 +21,25 @@ class App extends Component {
       })
     })
   }
+  yeetPick = (key) =>{
+    this.setState({
+      ...this.state,
+      pick: [key]
+    })
+  }
 
   render() {
     console.log(this.state.mList)
+    console.log(this.state.pick)
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Select a Month</h1>
-          <h3>SELECTED MONTH GOES HERE</h3>
+          <Header pick={this.state.pick}/>
           <br/>
         </header>
         <br/>
-        <MonthList mList={this.state.mList}/>
+        <MonthList yeetPick={this.yeetPick} mList={this.state.mList}/>
       </div>
     );
   }
